@@ -1,7 +1,4 @@
-<?php $__env->startSection('header'); ?>
-
 <?php $__env->startSection('content'); ?>
-
     <div class="row justify-content-center mt-3">
         <div class="col-md-12">
             <?php if($message = Session::get('success')): ?>
@@ -11,18 +8,18 @@
                 </div>
             <?php endif; ?>
 
-            <div class="card">
+            <div class="card container-md ">
                 <div class="card-header">
                     <a>Assists List </a>
                 </div>
-                <div class="card-body container-md">
+                <div class="card-body container-md d-flex justify-content-center">
                     
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-striped table-bordered text-center" style="max-width: 700px">
                         <thead>
                             <tr>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Cantidad de Asistencia</th>
+                                <th scope="col" style="width: 140px">Cant Asistencia</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -34,8 +31,8 @@
                                     <td> <?php echo e($student->assist->count()); ?> </td>
                                     <td>
                                         <a href="<?php echo e(route('assists.show', $student->id)); ?>"
-                                        class="btn btn-warning btn-sm <?php echo e($student->assist->count() == 0 ? ' disabled' : ''); ?> ">
-                                        <i class="bi bi-eye"></i> Show</a>
+                                            class="btn btn-warning btn-sm <?php echo e($student->assist->count() == 0 ? ' disabled' : ''); ?> ">
+                                            <i class="bi bi-eye"></i> Show</a>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

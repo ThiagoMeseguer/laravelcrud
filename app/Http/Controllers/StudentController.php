@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Parameter;
+use App\Models\Logs;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
@@ -11,6 +12,7 @@ use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -72,6 +74,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request): RedirectResponse
     {
         Student::create($request->all());
+        Logs::setLog("alta");
         return redirect()->route('students.index')
             ->withSuccess('New Student is added successfully.');
     }
@@ -94,6 +97,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student): RedirectResponse
     {
         $student->update($request->all());
+        Logs::setLog("modificacion");
         return redirect()->back()
             ->withSuccess('Student is updated successfully.');
     }
@@ -102,6 +106,7 @@ class StudentController extends Controller
     {
         $student->assist()->delete();
         $student->delete();
+        Logs::setLog("baja");
         return redirect()->route('students.index')
             ->withSuccess('Student is deleted successfully.');
     }

@@ -44,16 +44,18 @@
                         <a href="<?php echo e(route('students.create')); ?>" class="btn btn-success btn-sm mb-3"><i
                                 class="bi bi-plus-circle"></i> Añadir Estudiante</a>
                         <a href="<?php echo e(Route('assists.create')); ?>" class="btn btn-success btn-sm mb-3"><i
-                                class="bi bi-plus-circle"></i> Agregar Asistencia</a>
+                                class="bi bi-plus-circle"></i> Agregar Asistencia por DNI</a>
                         
                         <div class="dropdown">
-                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Exportar Lista Actual
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="<?php echo e(route('export', ['students' => json_encode($students), 'type' => 'pdf'])); ?>" class="dropdown-item">Como PDF</a></li>
-                                <li><a href="<?php echo e(route('export', ['students' => json_encode($students), 'type' => 'excel'])); ?>" class="dropdown-item">Como Excel</a></li>
+                                <li><a href="<?php echo e(route('export.pdf', ['students' => json_encode($students)])); ?>"
+                                        class="dropdown-item">Como PDF</a></li>
+                                <li><a href="<?php echo e(route('export.excel', ['students' => json_encode($students)])); ?>"
+                                        class="dropdown-item">Como Excel</a></li>
                             </ul>
                         </div>
                     </div>
@@ -70,12 +72,13 @@
                                 <option value="3" <?php echo e(request('anio') == '3' ? 'selected' : ''); ?>>3ro</option>
                             </select>
                             <button type="submit" class="btn btn-primary  h-7 pb-3 pt-0 mb-4 mx-2 border-gray-300"><span
-                                    class="bi bi-search"></span> Filtrar</button>
-                            
-                            <?php if(request()->has('nombre') || request()->has('anio')): ?>    
-                            <a href=" <?php echo e(route('students.index')); ?>" class="btn btn-primary h-7 pb-3 pt-0 mb-4 mx-2 border-gray-300">
-                                Mostrar todos
-                            </a>
+                                    class="bi bi-search"></span> Filtrar
+                            </button>
+                            <?php if(request()->has('nombre') || request()->has('anio')): ?>
+                                <a href=" <?php echo e(route('students.index')); ?>"
+                                    class="btn btn-primary h-7 pb-3 pt-0 mb-4 mx-2 border-gray-300">
+                                    Mostrar todos
+                                </a>
                             <?php endif; ?>
                         </div>
                     </form>
@@ -107,41 +110,43 @@
                                     </td>
                                     <td><?php echo e($student->condicion); ?></td>
                                     <td>
-                                        <form action="<?php echo e(route('students.destroy', $student->id)); ?>" method="post"
-                                            id="delete">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                            
+                                        <div class="form-group flex gap-1">
                                             <a href="<?php echo e(route('students.show', $student->id)); ?>"
-                                                class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                            class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
 
                                             <a href="<?php echo e(route('students.edit', $student->id)); ?>"
-                                                class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                                            class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
 
+                                            <form action="<?php echo e(route('students.destroy', $student->id)); ?>" method="post"
+                                                id="delete">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    onclick="confirmDelete('<?php echo e(route('students.destroy', $student->id)); ?>')">
+                                                    <i class="bi bi-trash"></i> Delete
+                                                </button>
+                                            </form>
                                             
-
-                                            <button type="button" class="btn btn-danger btn-sm"
-                                                onclick="confirmDelete('<?php echo e(route('students.destroy', $student->id)); ?>')">
-                                                <i class="bi bi-trash"></i> Delete
-                                            </button>
-                                            
-                                        </form>
+                                            <form method="POST" action="<?php echo e(route('assists.store')); ?>">
+                                                <?php echo csrf_field(); ?>
+                                                <input type="hidden" name="student_id" value="<?php echo e($student->id); ?>">
+                                                <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-plus-circle"></i>
+                                                Agregar Asistencia</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                 <tr>
                                     <td colspan="6">
                                         <span class="text-danger">
-                                            <strong>No Student Found!</strong>
+                                            <strong>No hay estudiantes</strong>
                                         </span>
                                     </td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center">
-                        
-                    </div>
                 </div>
             </div>
         </div>

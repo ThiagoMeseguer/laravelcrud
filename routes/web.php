@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AssistController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\LogsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () { return view('welcome'); });
 Route::resource('students', StudentController::class)->middleware(['auth', 'verified']);
 
 Route::resource('assists',AssistController::class)->middleware(['auth','verified']);
+
+Route::get('logs', [LogsController::class, 'index'])->middleware(['auth','admin'])->name('logs');
 
 Route::get('parameters',[ParameterController::class,'index'])->middleware(['auth'])->name('parameters.index');
 Route::put('parameters',[ParameterController::class,'update'])->middleware(['auth'])->name('parameters.update');
@@ -45,4 +48,4 @@ require __DIR__.'/auth.php';
 
 //Route::get('/assists.create')->name('assist');
 
-//Route::get('/dashboard', function () { return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard')
+//Route::get('/dashboard', function () { return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
