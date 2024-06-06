@@ -9,7 +9,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">User ID</th>
+                        <th scope="col">User</th>
                         <th scope="col">Accion</th>
                         <th scope="col">Direccion IP</th>
                         <th scope="col">Navegador</th>
