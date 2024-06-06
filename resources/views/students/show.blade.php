@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="grupo" class="col-md-4 col-form-label text-md-end text-start"><strong>Grupo:</strong></label>
+                        <label for="condicion" class="col-md-4 col-form-label text-md-end text-start"><strong>Condicion:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $student->condicion }}
                         </div>

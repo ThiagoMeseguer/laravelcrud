@@ -51,13 +51,14 @@ class AssistController extends Controller
         $today = now()->toDateString();
         // Verifico si tiene asistencia esa fecha, first() trae la primera que encuentra
         $existeAssist = $student->assist()->whereDate('created_at', $today)->first();
+        // Si el estudiante ya tiene una asistencia hoy
         if ($existeAssist) {
-            // Si el estudiante ya tiene una asistencia hoy, haz lo que necesites aquí
             if ($index == route('students.index')) {
                 return redirect()->route('students.index')->withError('El estudiante ya tiene una asistencia hoy.');
             }
             return redirect()->route('assists.create')->withError('El estudiante ya tiene una asistencia hoy.');
         }
+
         Assist::create($request->all());
         if ($index == route('students.index')) {
             return redirect()->route('students.index')->withSuccess('Nueva asistencia añadida exitosamente para '.$student->apellido.' '.$student->nombre);
@@ -71,12 +72,12 @@ class AssistController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id); // Obtén un estudiante por su ID
+        $student = Student::find($id);
 
         $assists = $student->assist;
 
         foreach ($assists as $assist) {
-            // Transformamos la cadena de fecha para eliminar la parte de la zona horaria
+            // Transformo la cadena de fecha para eliminar la parte de la zona horaria
             $date = Carbon::parse($assist->created_at);
             $date->locale('es');
             $date = $date->isoFormat('dddd[ ] D [de] MMMM [de] Y');
@@ -114,24 +115,4 @@ class AssistController extends Controller
         $assist->delete();
         return redirect()->back()->withSuccess('Assist is deleted successfully.');
     }
-    // public function getAssist($id)
-    // {
-    //     $student = Student::find($id);
-    //     $assists = $student->assist;
-    //     //return response()->json(['assists' => $assists], 200);
-    //     return view('assists.getAssist', compact('student', 'assists'));
-    // }
-
-    // public function getStudentDni()
-    // {
-        
-    // }
-
-    // public function setAssist(Request $request, $id)
-    // {
-    //     Assist::create(['student_id' => $id]);
-    //     $student = Student::find($id);
-    //     Session::flash('success', 'Asistencia agregada correctamente para ' . $student->nombre);
-    //     return redirect()->route('assists');
-    // }
 }

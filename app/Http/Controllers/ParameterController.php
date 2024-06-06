@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use App\Models\Parameter;
-use App\Http\Requests\UpdateParameterRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 

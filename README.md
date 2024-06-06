@@ -1,20 +1,14 @@
-# Simple Laravel 10 CRUD Application Tutorial
-Learn how to develop a simple Laravel 10 CRUD application
+## Instalacion
+Asegúrese de haber configurado el entorno correctamente. Necesitarás mínimo PHP 8.1, MySQL/MariaDB, y composer.
 
-> The complete tutorial step by step guide is available on my blog. [Laravel 10 CRUD Application](https://www.allphptricks.com/simple-laravel-10-crud-application/)
-
-## Blog
-https://www.allphptricks.com/
-
-
-## Installation 
-Make sure that you have setup the environment properly. You will need minimum PHP 8.1, MySQL/MariaDB, and composer.
-
-1. Download the project (or clone using GIT)
-2. Copy `.env.example` into `.env` and configure your database credentials
-3. Go to the project's root directory using terminal window/command prompt
-4. Run `composer install` y `npm install` y npm run build
-5. Set the application key by running `php artisan key:generate --ansi`
-6. Run migrations `php artisan migrate` y seed
-7. Start local server by executing `php artisan serve`
-8. Visit here [http://127.0.0.1:8000/products](http://127.0.0.1:8000/products) to test the application
+1. Descargar el proyecto o clonar desde git
+2. Modificar el archivo .env para el nombre de la base de datos en caso de no
+querer utilizar el nombre por defecto (laravel). Para cambiarlo debe ingresar a
+.env y cambiar DB_DATABASE=laravel por el nombre que quiera.
+3. Vaya al directorio raíz del proyecto (laravelcrud) usando la ventana de la terminal o símbolo del sistema (cmd)
+4. Ejecute `composer install` y `npm install` y `npm run build`
+5. Configure la clave de la aplicación ejecutando `php artisan key:generate --ansi`
+6. Run migrations `php artisan migrate` y `php artisan db:seed`
+7. Inicie el servidor local ejecutando `php artisan serve`
+8. Visite aquí [http://127.0.0.1:8000] para probar la aplicación
+9. El sistema trae una cuenta admin `email: admin@example.com contraseña: admin` y lo mismo para un usuario `email: user@example.com contraseña: user`

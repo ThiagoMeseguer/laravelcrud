@@ -12,7 +12,6 @@ use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -65,6 +64,21 @@ class StudentController extends Controller
         }
         return $students;
     }
+    public function getBirthday($students)
+    {
+        $birthdays = [];
+        if ($students) {
+            $hoy = date_format(now(), 'd-m');
+            foreach ($students as $student) {
+                $fecha = date_format(new DateTime($student->nacimiento), 'd-m');
+                if ($hoy == $fecha) {
+                    $birthdays[] = $student;
+                }
+            }
+            return $birthdays;
+        }
+        return $birthdays;
+    }
 
     public function create(): View
     {
@@ -111,19 +125,4 @@ class StudentController extends Controller
             ->withSuccess('Student is deleted successfully.');
     }
 
-    public function getBirthday($students)
-    {
-        $birthdays = [];
-        if ($students) {
-            $hoy = date_format(now(), 'd-m');
-            foreach ($students as $student) {
-                $fecha = date_format(new DateTime($student->nacimiento), 'd-m');
-                if ($hoy == $fecha) {
-                    $birthdays[] = $student;
-                }
-            }
-            return $birthdays;
-        }
-        return $birthdays;
-    }
 }

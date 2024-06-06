@@ -197,8 +197,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\laravelcrud\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\laragon\\www\\laravelcrud\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -371,13 +371,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\app',
+        'root' => 'C:\\laragon\\www\\laravelcrud\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\app/public',
+        'root' => 'C:\\laragon\\www\\laravelcrud\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -397,7 +397,7 @@
     ),
     'links' => 
     array (
-      'C:\\laragon\\www\\laravel-crud - copia\\public\\storage' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\app/public',
+      'C:\\laragon\\www\\laravelcrud\\public\\storage' => 'C:\\laragon\\www\\laravelcrud\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -436,14 +436,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\laravelcrud\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\laravelcrud\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -508,7 +508,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\laravelcrud\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -575,7 +575,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\laragon\\www\\laravel-crud - copia\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\laravelcrud\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -687,7 +687,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\laravelcrud\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -707,9 +707,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\laragon\\www\\laravel-crud - copia\\resources\\views',
+      0 => 'C:\\laragon\\www\\laravelcrud\\resources\\views',
     ),
-    'compiled' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\laravelcrud\\storage\\framework\\views',
   ),
   'excel' => 
   array (
@@ -824,7 +824,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'C:\\laragon\\www\\laravel-crud - copia\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'C:\\laragon\\www\\laravelcrud\\storage\\framework/cache/laravel-excel',
       'local_permissions' => 
       array (
       ),
@@ -908,7 +908,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'C:\\laragon\\www\\laravel-crud - copia',
+    'remote_sites_path' => 'C:\\laragon\\www\\laravelcrud',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',
